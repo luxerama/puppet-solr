@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC
+"-//Apple Computer//DTD PLIST 1.0//EN" "
+http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>org.apache.solr</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/java</string>
+    <string>-Djetty.home=<%= scope.lookupvar "solr::config::solrhome" %></string>
+    <string>-Djetty.logs=<%= scope.lookupvar "solr::config::logdir" %></string>
+    <string>-Dsolr.solr.home=<%= scope.lookupvar "solr::config::configdir" %></string>
+    <string>-jar</string>
+    <string><%= scope.lookupvar "solr::config::executable" %></string>
+  </array>
+  <key>ServiceDescription</key>
+  <string>Solr</string>
+  <key>WorkingDirectory</key>
+  <string>/opt/local/share/solr</string>
+  <key>UserName</key>
+  <string><%= scope.lookupvar "::luser" %></string>
+  <key>GroupName</key>
+  <string>staff</string>
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>
