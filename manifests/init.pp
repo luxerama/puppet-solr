@@ -17,6 +17,14 @@ class solr {
     owner   => 'root'
   }
 
+  # Set up all the files and directories solr expects.
+  file { [
+    $solr::config::logdir,
+    $solr::config::datadir
+  ]:
+    ensure => directory
+  }
+
   homebrew::formula { 'solr':
     before => Package['boxen/brews/solr']
   }
@@ -24,5 +32,10 @@ class solr {
   package { 'boxen/brews/solr':
     ensure  => '4.2.0-boxen1',
     require => Class['java']
+  }
+
+  service { 'dev.apache.solr':
+    ensure  => running,
+    require => Package['boxen/brews/solr']
   }
 }

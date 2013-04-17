@@ -18,7 +18,7 @@ http://www.apple.com/DTDs/PropertyList-1.0.dtd">
   <key>ServiceDescription</key>
   <string>Solr</string>
   <key>WorkingDirectory</key>
-  <string>/opt/local/share/solr</string>
+  <string><%= scope.lookupvar "solr::config::datadir" %></string>
   <key>UserName</key>
   <string><%= scope.lookupvar "::luser" %></string>
   <key>GroupName</key>
