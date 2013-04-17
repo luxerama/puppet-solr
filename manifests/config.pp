@@ -5,5 +5,5 @@ class solr::config {
   $configdir   = "${solrhome}/multicore"
   $datadir     = "${boxen::config::datadir}/solr"
   $logdir      = "${boxen::config::logdir}/solr"
-  $executable  = "${datadir}/start.jar"
+  $executable  = "${solrhome}/start.jar"
 }

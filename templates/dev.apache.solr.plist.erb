@@ -5,7 +5,14 @@ http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>org.apache.solr</string>
+  <string>dev.apache.solr</string>
+
+  <key>Boxen</key>
+  <dict>
+    <key>Description</key>
+    <string>Search server based on the Lucene Java search library.</string>
+  </dict>
+
   <key>ProgramArguments</key>
   <array>
     <string>/usr/bin/java</string>
@@ -15,15 +22,20 @@ http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <string>-jar</string>
     <string><%= scope.lookupvar "solr::config::executable" %></string>
   </array>
-  <key>ServiceDescription</key>
-  <string>Solr</string>
-  <key>WorkingDirectory</key>
-  <string><%= scope.lookupvar "solr::config::datadir" %></string>
-  <key>UserName</key>
-  <string><%= scope.lookupvar "::luser" %></string>
-  <key>GroupName</key>
-  <string>staff</string>
+
   <key>RunAtLoad</key>
   <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>WorkingDirectory</key>
+  <string><%= scope.lookupvar "solr::config::datadir" %></string>
+
+  <key>StandardErrorPath</key>
+  <string><%= scope.lookupvar "solr::config::logdir" %>/console.log</string>
+
+  <key>StandardOutPath</key>
+  <string><%= scope.lookupvar "solr::config::logdir" %>/console.log</string>
 </dict>
 </plist>
