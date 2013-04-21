@@ -24,8 +24,8 @@ Puppet::Type.newtype(:searchindex) do
   newparam :configfile do
     desc "The Path to the search config file"
     validate do |value|
-      unless File.exist? value
-        raise ArgumentError, "No configuration file found at '#{value}'"
+      unless (Pathname.new value).absolute?
+        raise ArgumentError, "Path to configuration has to be absolute, '#{value}' given."
       end
     end
   end
