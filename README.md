@@ -11,7 +11,7 @@ include solr
 searchindex { "test":
       name       => "test",
       provider   => solr,
-      configfile => /abs/path/to/config.xml,
+      configfile => "/abs/path/to/config.xml",
       notify     => Service['dev.apache.solr'],
       require    => Package['boxen/brews/solr'];
     }
